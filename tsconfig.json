@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": false,
+    "sourceMap": true,
+    "lib": ["ES7", "DOM", "ES2015.Promise"],
+    "module": "ES2015",
+    "target": "es5",
+    "jsx": "react"
+  },
+  "include": ["./src/**/*"]
+}

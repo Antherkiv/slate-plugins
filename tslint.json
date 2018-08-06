@@ -1,0 +1,9 @@
+{
+	"defaultSeverity": "error",
+	"extends": [
+		"tslint",
+		"tslint-eslint-rules",
+		"tslint-config-prettier",
+		"tslint-react"
+	]
+}

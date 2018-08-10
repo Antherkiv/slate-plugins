@@ -1,13 +1,16 @@
 import * as React from 'react';
+import { List } from 'immutable';
+import { EditorProps as SlateEditorProps } from 'slate-react';
 import { Block, Text, Value, Change, Node } from 'slate';
-import { Editor } from 'slate-react';
 
-import {
-  CHILD_REQUIRED,
-  CHILD_TYPE_INVALID,
-  CHILD_OBJECT_INVALID,
-  CHILD_UNKNOWN
-} from 'slate-schema-violations';
+interface PluginEdiorProps {
+  titlePlaceholder?: string | React.ReactNode;
+  contentPlaceholder?: string | React.ReactNode;
+}
+
+interface Editor {
+  props: EditorProps;
+}
 
 interface renderPlaceholderProps {
   editor: Editor;
@@ -15,7 +18,14 @@ interface renderPlaceholderProps {
   parent: Node;
 }
 
+// Custom mergin
+type EditorProps = SlateEditorProps & PluginEdiorProps;
+
 const LAST_CHILD_IS_VOID_INVALID: string = 'last_child_is_void_invalid';
+const CHILD_TYPE_INVALID: string = 'child_type_invalid';
+const CHILD_UNKNOWN: string = 'child_unknown';
+const CHILD_REQUIRED: string = 'child_required';
+const CHILD_OBJECT_INVALID: string = 'child_object_invalid';
 
 const placeholderStyle: React.CSSProperties = {
   pointerEvents: 'none',
@@ -44,7 +54,7 @@ export default () => ({
       ) => {
         switch (code) {
           case CHILD_TYPE_INVALID: {
-            if (node.nodes.size < 3) {
+            if (node.object !== 'text' && node.nodes.size < 3) {
               const type = index === 0 ? 'title' : 'body';
               return change.setNodeByKey(child.key, type);
             }
@@ -96,10 +106,17 @@ export default () => ({
           switch (code) {
             case LAST_CHILD_IS_VOID_INVALID: {
               const block = Block.create('paragraph');
-              if (node.nodes.size === 1 && child.object === 'text') {
+              if (
+                node.object !== 'text' &&
+                node.nodes.size === 1 &&
+                child.object === 'text'
+              ) {
                 return change.replaceNodeByKey(child.key, block);
               }
-              return change.insertNodeByKey(node.key, node.nodes.size, block);
+              return (
+                node.object !== 'text' &&
+                change.insertNodeByKey(node.key, node.nodes.size, block)
+              );
             }
             case CHILD_OBJECT_INVALID:
             case CHILD_REQUIRED: {
@@ -119,9 +136,14 @@ export default () => ({
       node,
       parent
     }: { editor: Editor; node: Node; parent: Node } = props;
-    if (parent.object !== 'document' && parent.type !== 'body') return;
+    if (
+      parent.object !== 'document' &&
+      (parent.object === 'block' && parent.type !== 'body')
+    )
+      return;
     if (node.object != 'block') return;
-    if (!Text.isTextList(node.nodes)) return;
+    if (!List.isList(node.nodes) && node.nodes.every(item => Text.isText(item)))
+      return;
     if (node.text != '') return;
 
     if (node.type === 'title' && node.getBlocks().size === 0) {
@@ -132,7 +154,11 @@ export default () => ({
       );
     }
 
-    if (node.type === 'paragraph' && parent.getBlocks().size === 1) {
+    if (
+      node.type === 'paragraph' &&
+      parent.object !== 'text' &&
+      parent.getBlocks().size === 1
+    ) {
       return (
         <span contentEditable={false} style={placeholderStyle}>
           {contentPlaceholder}

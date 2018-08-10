@@ -3,7 +3,7 @@
 >
 > 1. Use lerna to manage and bootstrap monorepos.
 > 2. Intensive use of npx to take the command for npm root (as you can see and the only plugin writing yet I mean the prepare script command)
-> 3. Compile typescript and typescript xml with rollup.
+> 3. Compile typescript and typescript XML:like syntax with rollup.
 > 4. Use parcel for fast development (if it's useful please use it).
 
 ```console
@@ -11,10 +11,10 @@ john@doe master:xxxx
 (22:26:50) ~/d/j/slate-plugins ❯❯❯ npx lerna link
 
 john@doe master:xxxx
-(22:26:50) ~/d/j/slate-plugins ❯❯❯ npx lerna bootstrap --hoist
+(22:26:54) ~/d/j/slate-plugins ❯❯❯ npx lerna bootstrap --hoist
 
 john@doe master:xxxx
-(22:26:50) ~/d/j/slate-plugins ❯❯❯ npm start
+(22:26:60) ~/d/j/slate-plugins ❯❯❯ npm start
 ```
 
 > Thanks for reading, I hope you can learn along with me.

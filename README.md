@@ -1,10 +1,10 @@
 > This module is for testing pourposes only in hope to grow up and become a real set of useful slate-plugins
-> But you have interesting examples (not completed yet :neckbeard:, the following are completed):
+> but you have interesting examples (my goals are not completed yet, the following are completed):
 >
 > 1. Use lerna to manage and bootstrap monorepos.
-> 2. Intensive use of npx to take the command for npm root (as you can see and the only plugin writing yet I mean the prepare script command)
-> 3. Compile typescript and typescript XML:like syntax with rollup.
-> 4. Use parcel for fast development (if it's useful please use it).
+> 2. Get advantage of npx to take the commands from the root module (where all the not local packages are actually installed) and transpile typescript with rollup.
+> 3. Transpile typescript and typescript XML:like syntax with rollup.
+> 4. Use parcel for fast development (if it's useful please use it, this topic it's not actually related yet with the above).
 
 ```console
 john@doe master:xxxx

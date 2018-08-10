@@ -1,4 +1,4 @@
-> This module is for testing pourposes only in hope to grow and become a real set of slate-plugins
+> This module is for testing pourposes only in hope to grow up and become a real set of useful slate-plugins
 > But you have interesting examples (not completed yet :neckbeard:, the following are completed):
 >
 > 1. Use lerna to manage and bootstrap monorepo.

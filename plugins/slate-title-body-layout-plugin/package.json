@@ -2,7 +2,8 @@
   "name": "slate-title-body-layout-plugin",
   "version": "0.0.1",
   "description": "Plugin that provides title, body layout",
-  "main": "src/index.tsx",
+  "main": "dist/index.js",
+  "types": "index.d.ts",
   "scripts": {
     "prepare": "npx rollup -c"
   },

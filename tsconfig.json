@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "declaration": false,
+    "declarationDir": "./typings",
+    "declaration": true,
     "sourceMap": true,
     "lib": ["ES7", "DOM", "ES2015.Promise"],
     "module": "ES2015",

@@ -29,8 +29,8 @@
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.6",
     "reactstrap": "^6.3.1",
+    "rollup": "^0.64.1",
     "rollup-plugin-typescript2": "^0.16.1",
-    "serve": "^9.4.0",
     "slate": "^0.36.0",
     "slate-react": "^0.14.1",
     "slate-schema-violations": "^0.1.25",
@@ -39,8 +39,5 @@
     "tslint-eslint-rules": "^5.3.1",
     "tslint-react": "^3.6.0",
     "typescript": "^2.9.2"
-  },
-  "dependencies": {
-    "rollup": "^0.64.1"
   }
 }

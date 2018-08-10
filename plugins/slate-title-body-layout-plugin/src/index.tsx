@@ -18,7 +18,7 @@ interface renderPlaceholderProps {
   parent: Node;
 }
 
-// Custom mergin
+// Custom "Merging"
 type EditorProps = SlateEditorProps & PluginEdiorProps;
 
 const LAST_CHILD_IS_VOID_INVALID: string = 'last_child_is_void_invalid';
